@@ -24,10 +24,13 @@ class Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
+  # sign_in後のリダイレクト先の指定
   def after_sign_in_path_for(resource)
     admins_homes_top_path
   end
   
+  # sign_out後のリダイレクト先の指定
   def after_sign_out_path_for(resource)
     new_admin_session_path
   end

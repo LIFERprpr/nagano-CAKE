@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  # adminsフォルダのhomes#topをルートに指定し、URLを/adminに変更
   namespace :admins do
     get 'homes/top'
   end
