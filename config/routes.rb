@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  
+  namespace :admins do
+    get 'homes/top'
+  end
+  namespace :admins do
+    root 'homes#top'
+  end
+  
   devise_for :admins, controllers: {
     sessions:       'admins/sessions',
     passwords:      'admins/passwords',
