@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # adminsフォルダのhomes#topをルートに指定し、URLを/adminに変更
   namespace :admins do
+    resources :items, except: [:destroy]
+    
     get 'homes/top'
   end
   namespace :admins do
@@ -17,5 +19,7 @@ Rails.application.routes.draw do
     passwords:      'customers/passwords',
     registrations:  'customers/registrations'
   }
+  
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
