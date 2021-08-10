@@ -8,6 +8,10 @@ class Admins::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
   
+  def edit
+    
+  end
+  
   private
   
   def customer_params
