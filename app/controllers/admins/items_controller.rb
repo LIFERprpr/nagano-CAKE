@@ -18,6 +18,10 @@ class Admins::ItemsController < ApplicationController
     @item.save
     redirect_to admins_item_path(@item.id)
   end
+  
+  def edit
+    
+  end
 
   private
   def item_params
