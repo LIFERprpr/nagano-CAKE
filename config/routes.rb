@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  # adminsフォルダのhomes#topをルートに指定し、URLを/adminに変更
+  
   namespace :admins do
     resources :items, except: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    
     
     get 'homes/top'
   end
+  # adminsフォルダのhomes#topをルートに指定し、URLを/adminに変更
   namespace :admins do
     root 'homes#top'
   end
