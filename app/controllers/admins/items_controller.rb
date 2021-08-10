@@ -5,6 +5,7 @@ class Admins::ItemsController < ApplicationController
   end
   
   def show
+    @item = Item.find(params[:id])
     
   end
 
@@ -15,7 +16,7 @@ class Admins::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save
-    redirect_to admins_root_path
+    redirect_to admins_item_path(@item.id)
   end
 
   private

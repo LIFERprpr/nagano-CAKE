@@ -18,10 +18,12 @@
         <%= item.id %>
       </td>
       <td>
+        <%= link_to admins_item_path(item.id) do %>
         <%= item.name %>
+        <% end %>
       </td>
       <td>
-        <%= item.price %>
+        <%= item.price.to_s(:delimited) %>
       </td>
     </tr>
     <% end %>
