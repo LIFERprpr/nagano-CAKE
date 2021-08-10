@@ -3,6 +3,10 @@ class Admins::ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).order("id ASC")
   end
+  
+  def show
+    
+  end
 
   def new
     @item = Item.new
