@@ -13,6 +13,8 @@
     <!--管理者のログアウトのリンクを出すため、とりあえず、link_toを記述。のちに変更予定-->
     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
     
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    
     <%= yield %>
   </body>
 </html>

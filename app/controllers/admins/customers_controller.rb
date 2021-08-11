@@ -14,7 +14,7 @@ class Admins::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.save(customer_params)
+    @customer.update(customer_params)
     redirect_to admins_customer_path(@customer.id)
 
   end
