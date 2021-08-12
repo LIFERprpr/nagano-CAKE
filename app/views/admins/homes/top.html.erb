@@ -1,2 +1,23 @@
-<h1>Admins::Homes#top</h1>
-<p>Find me in app/views/admins/homes/top.html.erb</p>
+<h4>注文履歴一覧</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.created_at %></td>
+      <td><%= order.name %></td>
+      <!--order.order_items.countが正しく動いているか要確認-->
+      <td><%= order.order_items.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @orders %>
