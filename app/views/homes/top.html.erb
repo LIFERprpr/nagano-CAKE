@@ -1,10 +1,18 @@
-<h4>新規商品</h4>
+<div>
+  ようこそ、ながのCAKEへ！<br />
+  このサイトは、ケーキ販売のECサイトになります。<br />
+  会員でない方も商品の閲覧はできますが、<br />
+  購入には会員登録が必要になります。<br />
+</div>
 
-<% @items.each do |item| %>
+<h4>新着商品</h4>
+
+<% @items.first(4).each do |item| %>
 <p>
   <%= item.name %>
 </p>
 <p>
-  <%= item.price %>
+  ¥<%= item.price %>
 </p>
 <% end %>
+<!--link_toで「全ての商品を見る>」のコードを書く-->
