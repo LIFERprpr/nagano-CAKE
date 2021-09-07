@@ -24,8 +24,12 @@ Rails.application.routes.draw do
   get '/about' => 'homes#about'
   
   scope module: :public do
-    
-
+    resource :customers, only: [:show, :edit, :update] do
+      collection do
+        get :check
+        patch :withdraw
+      end
+    end
   end
   
   devise_for :customers, controllers: {
