@@ -19,12 +19,15 @@ Rails.application.routes.draw do
     registrations:  'admins/registrations'
   }
 
-  scope module: :public do
-
-  end
 
   root to: 'homes#top'
   get '/about' => 'homes#about'
+  
+  scope module: :public do
+    
+
+  end
+  
   devise_for :customers, controllers: {
     sessions:       'customers/sessions',
     passwords:      'customers/passwords',
