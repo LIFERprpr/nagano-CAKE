@@ -15,7 +15,15 @@ class Public::CustomersController < ApplicationController
   end
   
   def check
-    
+  end
+  
+  def withdraw
+    @customer = current_customer
+    @customer.update(is_active: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用をお待ちしております。"
+    redirect_to root_path
+  end
   
   private
   
