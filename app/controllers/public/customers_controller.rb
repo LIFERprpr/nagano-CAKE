@@ -14,6 +14,9 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_path
   end
   
+  def check
+    
+  
   private
   
   def customer_params
