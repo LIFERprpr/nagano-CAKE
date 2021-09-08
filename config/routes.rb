@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
   namespace :admins do
     resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
@@ -36,6 +29,7 @@ Rails.application.routes.draw do
         get :check
         patch :withdraw
       end
+      resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     end
   end
   
