@@ -29,6 +29,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.find(params[:id])
     @address.destroy
     @addresses = current_customer.address
+    redirect_to customers_addresses_path
   end
 
   private
