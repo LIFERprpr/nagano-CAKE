@@ -30,6 +30,8 @@ Rails.application.routes.draw do
         patch :withdraw
       end
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+      
+      resources :items, only: [:index, :show]
     end
   end
   

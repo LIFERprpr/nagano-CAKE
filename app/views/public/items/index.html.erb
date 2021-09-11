@@ -1,0 +1,9 @@
+<h4>商品一覧</h4>(全<%= @items.count %>件)
+
+<div>
+  <% @items.each do |item| %>
+    <p><%= item.name %></p>
+    <p>¥<%= item.price %></p>
+  <% end %>
+</div>
+<%= paginate @items %>
