@@ -2,7 +2,10 @@
 
 <div>
   <% @items.each do |item| %>
+  <!--商品画像のコードを記述する-->
+  <%= link_to customers_item_path(item) do %>
     <p><%= item.name %></p>
+  <% end %>
     <p>¥<%= item.price %></p>
   <% end %>
 </div>
