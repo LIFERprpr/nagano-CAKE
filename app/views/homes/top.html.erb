@@ -9,7 +9,9 @@
 
 <% @items.first(4).each do |item| %>
 <p>
+  <%= link_to customers_item_path(item) do %>
   <%= item.name %>
+  <% end %>
 </p>
 <p>
   ¥<%= item.price %>
