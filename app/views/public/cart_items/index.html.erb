@@ -13,8 +13,8 @@
     </thead>
 
     <tbody>
+      <% @cart_items.each do |cart_item| %>
       <tr>
-        <% @cart_items.each do |cart_item| %>
         <td>
           <%= cart_item.item.name %>
         </td>
@@ -29,10 +29,24 @@
           <% end %>
         </td>
         <td>
-          <!--小計の記述を調べて変える<%= cart_item.item.add_tax_price.to_s(:delimited) %>-->
+          <%= cart_item.total_price(cart_item.amount, cart_item.item) %>
         </td>
-        <% end %>
+        <td>
+          <%= link_to "削除する", customers_cart_item_path(cart_item), method: :delete %>
+        </td>
       </tr>
+      <% end %>
     </tbody>
+  </table>
+
+  <div>
+    <%= link_to "買い物を続ける", root_path %>
+  </div>
+
+  <table>
+    <th>合計金額</th>
+    <td>
+      <!--合計金額の記述をする<%=  %>-->
+    </td>
   </table>
 </div>
