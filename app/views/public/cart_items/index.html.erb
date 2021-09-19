@@ -1,6 +1,6 @@
 <div>
   <h4>ショッピングカート</h4>
-
+  <%= link_to "カートを空にする", all_destroy_customers_cart_items_path, method: :delete %>
   <table>
     <thead>
       <tr>
@@ -30,6 +30,7 @@
         </td>
         <td>
           <%= cart_item.total_price(cart_item.amount, cart_item.item) %>
+          <% @total += cart_item.total_price(cart_item.amount, cart_item.item) %>
         </td>
         <td>
           <%= link_to "削除する", customers_cart_item_path(cart_item), method: :delete %>
@@ -46,7 +47,7 @@
   <table>
     <th>合計金額</th>
     <td>
-      <!--合計金額の記述をする<%=  %>-->
+      <%= @total %>
     </td>
   </table>
 </div>
