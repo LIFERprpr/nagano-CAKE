@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get '/about' => 'homes#about'
-  
+
   scope module: :public do
     resource :customers, only: [:show, :edit, :update] do
       collection do
@@ -30,23 +30,23 @@ Rails.application.routes.draw do
         patch :withdraw
       end
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-      
+
       resources :items, only: [:index, :show]
         resources :cart_items, only: [:index, :update, :destroy, :create] do
           collection do
             delete :all_destroy
           end
         end
-      
+
       resources :orders, only: [:index, :show, :new, :create] do
         collection do
-          get :confirm
+          post :confirm
           get :thanks
         end
       end
     end
   end
-  
+
   devise_for :customers, controllers: {
     sessions:       'customers/sessions',
     passwords:      'customers/passwords',
