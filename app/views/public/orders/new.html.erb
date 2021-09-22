@@ -11,19 +11,19 @@
     <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %><br />
 
     <h4>お届け先</h4>
-      <%= f.radio_button :address_id, 0 %>
+      <%= f.radio_button :select_address, 0 %>
       <%= f.label :ご自身の住所 %><br />
     <div>
       〒<%= current_customer.postal_code %><%= current_customer.address %><br />
       <%= current_customer.last_name %><%= current_customer.first_name %>
     </div>
     <div>
-      <%= f.radio_button :address_id, 1 %>
+      <%= f.radio_button :select_address, 1 %>
       <%= f.label :登録済住所から選択 %><br />
-      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+      <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :full_address) %>
     </div>
     <div>
-      <%= f.radio_button :address_id, 2 %>
+      <%= f.radio_button :select_address, 2 %>
       <%= f.label :新しいお届け先 %><br />
 
       <%= f.label :郵便番号 %>(ハイフンなし)

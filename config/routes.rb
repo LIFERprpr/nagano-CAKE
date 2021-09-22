@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
       resources :orders, only: [:index, :show, :new, :create] do
         collection do
-          post :confirm
+          get :confirm
           get :thanks
         end
       end
