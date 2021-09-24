@@ -11,6 +11,7 @@ class Public::OrdersController < ApplicationController
     puts @order.payment_method
     @order.shipping_cost = 800
     @total = 0
+    @total_payment = 0
 
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
@@ -24,6 +25,10 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       @order = Order.new(order_params)
     end
+  end
+  
+  def create
+    
   end
 
   private
