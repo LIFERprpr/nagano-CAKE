@@ -25,7 +25,6 @@
         </td>
         <td>
           <%= cart_item.total_price(cart_item.amount, cart_item.item) %>
-          <% @total += cart_item.total_price(cart_item.amount, cart_item.item) %>
         </td>
       </tr>
       <% end %>
@@ -45,7 +44,7 @@
     </tr>
     <tr>
       <th>請求金額</th>
-      <td><%= @total_payment = @total + @order.shipping_cost %></td>
+      <td><%= @order.total_payment.to_s(:delimited) %></td>
     </tr>
   </table>
 </div>

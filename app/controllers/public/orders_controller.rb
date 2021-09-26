@@ -12,6 +12,11 @@ class Public::OrdersController < ApplicationController
     @order.shipping_cost = 800
     @total = 0
     @total_payment = 0
+    current_customer.cart_items.each do |cart_item|
+     cart_item.total_price(cart_item.amount, cart_item.item)
+     @total += cart_item.total_price(cart_item.amount, cart_item.item)
+   end
+   @order.total_payment = @total + @order.shipping_cost
 
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
@@ -45,7 +50,7 @@ class Public::OrdersController < ApplicationController
 
   def thanks
   end
-  
+
   def index
     @orders = current_customer.orders.page(params[:page]).reverse_order
   end
@@ -53,6 +58,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:customer_id, :total_payment, :payment_method, :postal_code, :address, :name)
   end
 end
