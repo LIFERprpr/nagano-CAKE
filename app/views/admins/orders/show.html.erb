@@ -1,2 +1,68 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<div>
+ <h4>注文履歴詳細</h4>
+
+ <h5>購入者</h5>
+ <p>
+   <%= link_to "#{@order.customer.last_name}#{@order.customer.first_name}", admins_customer_path(@order.customer) %>
+ </p>
+ <h5>注文日</h5>
+ <p>
+   <%= @order.created_at %>
+ </p>
+ <h5>配送先</h5>
+ <p>
+   〒<%= @order.postal_code %><%= @order.address %><br />
+   <%= @order.name %>
+ </p>
+ <h5>支払方法</h5>
+ <p>
+   <%= @order.payment_method_i18n %>
+ </p>
+</div>
+
+<div>
+ <table>
+   <thead>
+      <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+      </tr>
+   </thead>
+
+   <tbody>
+      <% @order.order_items.each do |order_item| %>
+      <tr>
+          <td>
+              <%= order_item.item.name %>
+          </td>
+          <td>
+              <%= order_item.item.add_tax_price.to_s(:delimited) %>
+          </td>
+          <td>
+              <%= order_item.amount %>
+          </td>
+          <td>
+              <%= order_item.item.add_tax_price * order_item.amount %>
+          </td>
+      </tr>
+      <% end %>
+   </tbody>
+ </table>
+</div>
+
+<div>
+ <strong>商品合計</strong>
+ <p>
+    <%= @order.total_payment - @order.shipping_cost %>円
+ </p>
+ <strong>送料</strong>
+ <p>
+    <%= @order.shipping_cost %>円
+ </p>
+ <strong>請求金額合計</strong>
+ <p>
+    <%= @order.total_payment %>円
+ </p>
+</div>
