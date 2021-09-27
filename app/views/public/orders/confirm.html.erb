@@ -15,6 +15,7 @@
       <% current_customer.cart_items.each do |cart_item| %>
       <tr>
         <td>
+          <%= attachment_image_tag cart_item.item, :image %>
           <%= cart_item.item.name %>
         </td>
         <td>

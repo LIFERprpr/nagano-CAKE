@@ -9,6 +9,9 @@
 
 <% @items.first(4).each do |item| %>
 <p>
+  <%= attachment_image_tag item, :image %>
+</p>
+<p>
   <%= link_to customers_item_path(item) do %>
   <%= item.name %>
   <% end %>
