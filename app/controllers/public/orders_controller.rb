@@ -55,6 +55,11 @@ class Public::OrdersController < ApplicationController
     @orders = current_customer.orders.page(params[:page]).reverse_order
   end
 
+  def show
+    @order = current_customer.orders.find(params[:id])
+    @order.shipping_cost = 800
+  end
+
   private
 
   def order_params
