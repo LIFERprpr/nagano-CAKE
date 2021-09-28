@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+
+  before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items
     @total = 0
@@ -13,6 +15,7 @@ class Public::CartItemsController < ApplicationController
       end
 
       if @cart_item.save
+        flash[:notice] = "商品をカートに追加しました"
         redirect_to customers_cart_items_path
       else
         @item = Item.find(params[:cart_item][:item_id])
@@ -24,18 +27,21 @@ class Public::CartItemsController < ApplicationController
   def update
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_update)
+    flash[:notice] = "商品の数量を更新しました"
     redirect_to customers_cart_items_path
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    flash[:notice] = "商品をカートから削除しました"
     redirect_to customers_cart_items_path
   end
 
   def all_destroy
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
+    flash[:notice] = "カート内の商品をすべて削除しました"
     redirect_to customers_cart_items_path
   end
 

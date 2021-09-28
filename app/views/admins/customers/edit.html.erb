@@ -33,6 +33,14 @@
     <%= f.label :email, 'メールアドレス' %>
     <%= f.text_field :email %>
   </div>
+  <div class= "form-group">
+    <label>会員ステータス</label>
+    <%= f.radio_button :is_active, true %>
+    <%= f.label :有効 %>
+
+    <%= f.radio_button :is_active, false %>
+    <%= f.label :退会 %>
+  </div>
   <div class="form-group">
     <%= f.submit "変更を保存" %>
   </div>
