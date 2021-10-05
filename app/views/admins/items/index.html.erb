@@ -2,8 +2,8 @@
 
 <%= link_to '+', new_admins_item_path %>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-light">
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
@@ -29,4 +29,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="pagination justify-content-center">
 <%= paginate @items %>
+</div>
