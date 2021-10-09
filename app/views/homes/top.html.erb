@@ -1,24 +1,33 @@
-<div>
-  ようこそ、ながのCAKEへ！<br />
-  このサイトは、ケーキ販売のECサイトになります。<br />
-  会員でない方も商品の閲覧はできますが、<br />
-  購入には会員登録が必要になります。<br />
+<div class="container mb-4">
+  <div class="row mt-5 mb-5">
+    <div class="col-5 offset-3 border border-dark text-justify pt-4 pb-4 mb-4">
+      ようこそ、ながのCAKEへ！<br />
+      このサイトは、ケーキ販売のECサイトになります。<br />
+      会員でない方も商品の閲覧はできますが、<br />
+      購入には会員登録が必要になります。<br />
+    </div>
+  </div>
+
+  <div class="row">
+    <h4 class="col-2 offset-2">新着商品</h4>
+  </div>
+  <div class="row">
+    <% @items.first(4).each do |item| %>
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="col offset-3">
+          <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %>
+          </div>
+          <div class="card-body text-center">
+            <%= link_to customers_item_path(item) do %>
+            <strong class="card-title"><%= item.name %></strong>
+            <% end %>
+            <p class="card-text">¥<%= item.price %></p>
+          </div>
+        </div>
+      </div>
+        <% end %>
+  </div>
+        <!--link_toで「全ての商品を見る>」のコードを書く-->
+        <%= link_to "全ての商品を見る＞", customers_items_path, class: 'col offset-10' %>
 </div>
-
-<h4>新着商品</h4>
-
-<% @items.first(4).each do |item| %>
-<p>
-  <%= attachment_image_tag item, :image %>
-</p>
-<p>
-  <%= link_to customers_item_path(item) do %>
-  <%= item.name %>
-  <% end %>
-</p>
-<p>
-  ¥<%= item.price %>
-</p>
-<% end %>
-<!--link_toで「全ての商品を見る>」のコードを書く-->
-<%= link_to "全ての商品を見る＞", customers_items_path %>
