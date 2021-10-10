@@ -1,13 +1,27 @@
-<h4>商品一覧</h4>(全<%= @items.count %>件)
+<div class="container mt-4 mb-5">
+  <div class="row mb-4">
+    <h4 class="col-2 offset-5">商品一覧<small class="text-muted">(全<%= @items.count %>件)</small></h4>
+  </div>
 
-<div>
-  <% @items.each do |item| %>
-  <!--商品画像のコードを記述する-->
-  <%= attachment_image_tag item, :image %>
-  <%= link_to customers_item_path(item) do %>
-    <p><%= item.name %></p>
-  <% end %>
-    <p>¥<%= item.price %></p>
-  <% end %>
+    <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-sm-3">
+        <div class="card mb-5">
+          <div class="col offset-3">
+            <!--商品画像のコードを記述する-->
+            <%= attachment_image_tag item, :image %>
+          </div>
+          <div class="card-body text-center">
+          <%= link_to customers_item_path(item) do %>
+            <p class="card-title"><%= item.name %></p>
+          <% end %>
+            <p class="card-price">¥<%= item.price %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="pagination justify-content-center">
+      <%= paginate @items %>
+    </div>
 </div>
-<%= paginate @items %>

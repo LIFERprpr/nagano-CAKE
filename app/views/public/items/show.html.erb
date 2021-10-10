@@ -1,12 +1,18 @@
-<div>
-  <%= attachment_image_tag @item, :image %>
-  <h2><%= @item.name %></h2>
-  <p><%= @item.introduction %></p>
-  <h3>¥<%= @item.add_tax_price.to_s(:delimited) %><span>(税込)</span></h3>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-2 offset-3">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', size: "250x180" %>
+    </div>
+    <div class="col-6 offset-1">
+      <h2><%= @item.name %></h2>
+      <p class="mb-4"><%= @item.introduction %></p>
+      <h3 class="mb-4">¥<%= @item.add_tax_price.to_s(:delimited) %><small class="text-muted">(税込)</small></h3>
 
-  <%= form_with model: @cart_item, url: customers_cart_items_path, method: :post do |f| %>
-    <%= f.hidden_field :item_id, value: @item.id %>
-    <%= f.number_field :amount, min: "1", max: "10", placeholder: "個数選択" %>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
+      <%= form_with model: @cart_item, url: customers_cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.number_field :amount, min: "1", max: "10", placeholder: "個数選択", class: "col-3" %>
+        <%= f.submit "カートに入れる", class: "btn btn-success ml-5"%>
+      <% end %>
+    </div>
+  </div>
 </div>
