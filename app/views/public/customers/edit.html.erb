@@ -1,41 +1,43 @@
-<% if @customer.errors.any? %>
-  <%= @customer.errors.count %>件のエラーが発生しました
-  <%= @customer.errors.full_messages.each do |message| %>
-    <%= message %>
+<div class="container mt-2 mb-5">
+  <% if @customer.errors.any? %>
+    <%= @customer.errors.count %>件のエラーが発生しました
+    <%= @customer.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
   <% end %>
-<% end %>
 
-<h4>会員情報編集</h4>
+  <h4 class="row mb-5 mt-3">会員情報編集</h4>
 
-<%= form_with model: @customer, url: customers_path, local: true do |f| %>
-<div>
-  <%= f.label :氏名 %>
-  <%= f.text_field :last_name %>
-  <%= f.text_field :first_name %>
+    <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :氏名, class: "col-2" %>
+      <%= f.text_field :last_name, class: "form-control-sm col-2" %>
+      <%= f.text_field :first_name, class: "form-control-sm col-2 ml-2" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :フリガナ, class: "col-2" %>
+      <%= f.text_field :last_name_kana, class: "form-control-sm col-2" %>
+      <%= f.text_field :first_name_kana,class: "form-control-sm col-2 ml-2" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :郵便番号, class: "col-2" %>
+      <%= f.text_field :postal_code, class: "form-control-sm col-2" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :住所, class: "col-2" %>
+      <%= f.text_field :address, class: "form-control-sm col-6" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :電話番号, class: "col-2" %>
+      <%= f.text_field :telephone_number,  class: "form-control-sm col-2" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :メールアドレス, class: "col-2" %>
+      <%= f.text_field :email,  class: "form-control-sm col-2" %>
+    </div>
+    <div class="form-group">
+      <span class="col offset-2"><%= f.submit "編集内容を保存", class: "btn btn-success col-3" %></span>
+      <span class="col offset-1"><%= link_to "退会する", check_customers_path, class: "btn btn-danger" %></span>
+    </div>
+    <% end %>
 </div>
-<div>
-  <%= f.label :フリガナ %>
-  <%= f.text_field :last_name_kana %>
-  <%= f.text_field :first_name_kana %>
-</div>
-<div>
-  <%= f.label :郵便番号 %>
-  <%= f.text_field :postal_code %>
-</div>
-<div>
-  <%= f.label :住所 %>
-  <%= f.text_field :address %>
-</div>
-<div>
-  <%= f.label :電話番号 %>
-  <%= f.text_field :telephone_number %>
-</div>
-<div>
-  <%= f.label :メールアドレス %>
-  <%= f.text_field :email %>
-</div>
-<div>
-  <%= f.submit "編集内容を保存" %>
-  <%= link_to "退会する", check_customers_path %>
-</div>
-<% end %>

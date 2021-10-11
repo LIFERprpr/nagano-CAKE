@@ -22,49 +22,48 @@
   <strong class="col-2">支払方法</strong>
     <%= @order.payment_method_i18n %><br />
  </div>
-</div>
 
-<div class="row">
- <div class="col-8">
-  <table class="table mt-3">
-    <thead class="table-light">
-       <tr>
-           <th>商品名</th>
-           <th>単価（税込）</th>
-           <th>数量</th>
-           <th>小計</th>
-       </tr>
-    </thead>
+  <div class="row">
+    <table class="table col-8 mt-3">
+      <thead class="table-light">
+         <tr>
+             <th>商品名</th>
+             <th>単価（税込）</th>
+             <th>数量</th>
+             <th>小計</th>
+         </tr>
+      </thead>
 
-    <tbody>
-       <% @order.order_items.each do |order_item| %>
-       <tr>
-           <td>
-               <%= order_item.item.name %>
-           </td>
-           <td>
-               <%= order_item.item.add_tax_price.to_s(:delimited) %>
-           </td>
-           <td>
-               <%= order_item.amount %>
-           </td>
-           <td>
-               <%= order_item.item.add_tax_price * order_item.amount %>
-           </td>
-       </tr>
-       <% end %>
-    </tbody>
-  </table>
- </div>
+      <tbody>
+         <% @order.order_items.each do |order_item| %>
+         <tr>
+             <td>
+                 <%= order_item.item.name %>
+             </td>
+             <td>
+                 <%= order_item.item.add_tax_price.to_s(:delimited) %>
+             </td>
+             <td>
+                 <%= order_item.amount %>
+             </td>
+             <td>
+                 <%= order_item.item.add_tax_price * order_item.amount %>
+             </td>
+         </tr>
+         <% end %>
+      </tbody>
+    </table>
 
- <div class="col-4 align-self-end">
-  <strong class="col-2 offset-2">商品合計</strong>
-     <%= @order.total_payment - @order.shipping_cost %>円<br />
 
-  <strong class="col-2 offset-3">送料</strong>
-     <%= @order.shipping_cost %>円<br />
+    <div class="align-self-end col-3">
+      <strong class="col offset-3">商品合計</strong>
+         <%= @order.total_payment - @order.shipping_cost %>円<br />
 
-  <strong class="col-2 offset-1">請求金額合計</strong>
-     <%= @order.total_payment %>円
- </div>
+      <strong class="col offset-5">送料</strong>
+         <%= @order.shipping_cost %>円<br />
+
+      <strong class="col offset-2">請求金額合計</strong>
+         <%= @order.total_payment.to_s(:delimited) %>円
+    </div>
+  </div>
 </div>

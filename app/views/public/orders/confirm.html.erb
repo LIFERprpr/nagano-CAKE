@@ -15,17 +15,17 @@
       <tbody>
         <% current_customer.cart_items.each do |cart_item| %>
         <tr>
-          <td>
+          <td class="align-middle">
             <%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "30x30" %>
             <%= cart_item.item.name %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= cart_item.item.add_tax_price.to_s(:delimited) %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= cart_item.amount %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= cart_item.total_price(cart_item.amount, cart_item.item) %>
           </td>
         </tr>
@@ -38,15 +38,15 @@
     <table class="table table-bordered table-sm col-2 offset-1">
       <tr>
         <th class="table-secondary">送料</th>
-        <td><%= @order.shipping_cost %>円</td>
+        <td class="align-middle"><%= @order.shipping_cost %></td>
       </tr>
       <tr>
         <th class="table-secondary">商品合計</th>
-        <td><%= @total %></td>
+        <td class="align-middle"><%= @total %></td>
       </tr>
       <tr>
         <th class="table-secondary">請求金額</th>
-        <td><%= @order.total_payment.to_s(:delimited) %></td>
+        <td class="align-middle"><%= @order.total_payment.to_s(:delimited) %></td>
       </tr>
     </table>
   </div>

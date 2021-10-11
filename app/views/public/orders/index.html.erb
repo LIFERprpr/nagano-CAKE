@@ -1,9 +1,9 @@
-<div>
-  <h4>注文履歴一覧</h4>
+<div class="container mb-5">
+  <h4 class="row mt-3 mb-4">注文履歴一覧</h4>
 
   <div>
-    <table>
-      <thead>
+    <table class="table table-bordered">
+      <thead class="table table-secondary">
         <tr>
           <th>注文日</th>
           <th>配送先</th>
@@ -16,24 +16,24 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td>
+          <td class="col-1 align-middle">
             <%= order.created_at.strftime('%Y/%m/%d') %>
           </td>
-          <td>
+          <td class="col-4 align-middle">
             〒<%= order.postal_code %><br />
             <%= order.address %><br />
             <%= order.name %>
           </td>
-          <td>
+          <td class="col-2 align-middle">
             <% order.order_items.each do |order_item| %>
-              <%= order_item.item.name %>
+              <%= order_item.item.name %><br />
             <% end %>
           </td>
-          <td>
-            <%= order.total_payment %>円
+          <td class="col-1 align-middle">
+            <%= order.total_payment.to_s(:delimited) %>円
           </td>
-          <td>
-            <%= link_to "表示する", customers_order_path(order) %>
+          <td class="col-1 align-middle">
+            <%= link_to "表示する", customers_order_path(order), class: "btn btn-primary" %>
           </td>
         </tr>
         <% end %>

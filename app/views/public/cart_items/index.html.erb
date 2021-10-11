@@ -37,7 +37,7 @@
             <% @total += cart_item.total_price(cart_item.amount, cart_item.item) %>
           </td>
           <td class="align-middle col-1">
-            <%= link_to "削除する", customers_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
+            <%= link_to "削除する", customers_cart_item_path(cart_item), method: :delete, class: "btn btn-danger ml-4" %>
           </td>
         </tr>
         <% end %>
